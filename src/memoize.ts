@@ -6,11 +6,9 @@ export default (memoizee: Function) => {
   }
   const table = tables.get(memoizee)
 
-  return (...args) => {
+  return (...args: Array<any>) => {
     const id = JSON.stringify(args)
-    console.log(id)
     if (table.has(id)) {
-      console.log('hit')
       return table.get(id)
     }
 

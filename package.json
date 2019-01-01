@@ -1,15 +1,18 @@
 {
-  "name": "memoize",
+  "name": "@januswel/memoize",
   "author": "Takagi Kensuke <janus.wel.3@gmail.com>",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf dist",
+    "prepare": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "23.3.11",
-    "assert": "1.4.1",
     "jest": "23.6.0",
     "prettier": "1.15.3",
     "ts-jest": "23.10.5",

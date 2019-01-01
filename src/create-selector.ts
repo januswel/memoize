@@ -9,7 +9,7 @@ export default (memoizee: Function, properties: Array<string>) => {
   }
   const table = tables.get(memoizee)
 
-  return (argument: Object) => {
+  return (argument: { [key: string]: any }) => {
     const values = properties.map(property => {
       const value = argument[property]
       if (value == null) {

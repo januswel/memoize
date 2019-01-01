@@ -1,0 +1,7 @@
+.editorconfig
+.git
+.gitignore
+.prettierrc
+jest.config.js
+node_modules
+tsconfig.json
