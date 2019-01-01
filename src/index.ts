@@ -18,12 +18,13 @@ export default (memoizee: Function, properties: Array<string>) => {
       return value
     })
 
-    if (table.has(values)) {
-      return table.get(values)
+    const id = JSON.stringify(values)
+    if (table.has(id)) {
+      return table.get(id)
     }
 
     const result = memoizee(argument)
-    table.set(values, result)
+    table.set(id, result)
     return result
   }
 }
