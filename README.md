@@ -1,4 +1,4 @@
-# memoize v0.0.2
+# memoize v0.1.0
 
 Exports functions to memoize functions.
 
