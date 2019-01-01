@@ -1,4 +1,4 @@
-# memoize v0.0.1
+# memoize v0.0.2
 
 export functions to memoize and create selector
 
