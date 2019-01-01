@@ -2,6 +2,7 @@
 .git
 .gitignore
 .prettierrc
+.yangpao.toml
 jest.config.js
 node_modules
 tsconfig.json
