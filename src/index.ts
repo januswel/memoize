@@ -1,4 +1,4 @@
 import memoize from './memoize'
-import createSelector from './create-selector'
+import memoizeObject from './memoize-object'
 
-export { memoize, createSelector }
+export { memoize, memoizeObject }

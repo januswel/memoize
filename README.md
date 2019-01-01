@@ -1,12 +1,15 @@
 # memoize v0.0.2
 
-export functions to memoize and create selector
+Exports functions to memoize functions.
 
 ## Usage
 
 ```typescript
-import { memoize, createSelector } from '@januswel/memoize'
+import { memoize, memoizeObject } from '@januswel/memoize'
 
 const memoized = memoize((a, b) => a + b)
-const selector = createSelector((store) => store.todos.filter(todo => todo.isCompleted).length, ['todos'])
+const selector = memoizeObject(
+  (store) => store.todos.filter(todo => todo.isCompleted).length,
+  (store) => [store.todos]
+)
 ```
