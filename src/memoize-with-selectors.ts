@@ -6,10 +6,10 @@ export default <T>(memoizee: (arg: T) => any, createSelectors: (arg: T) => Array
   }
   const table = tables.get(memoizee)
 
-  return (argument: T) => {
-    const selectors = createSelectors(argument)
+  return (arg: T) => {
+    const selectors = createSelectors(arg)
     if (selectors.length === 0) {
-      return memoizee(argument)
+      return memoizee(arg)
     }
 
     const id = JSON.stringify(selectors)
@@ -17,7 +17,7 @@ export default <T>(memoizee: (arg: T) => any, createSelectors: (arg: T) => Array
       return table.get(id)
     }
 
-    const result = memoizee(argument)
+    const result = memoizee(arg)
     table.set(id, result)
     return result
   }

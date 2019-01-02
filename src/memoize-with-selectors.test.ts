@@ -1,4 +1,4 @@
-import memoizeObject from './memoize-object'
+import memoizeWithSelectors from './memoize-with-selectors'
 
 interface Store {
   filter: Date;
@@ -35,7 +35,7 @@ const createSelector = (store: Store) => [store.filter, store.todos]
 
 describe('memoizeObject', () => {
   it('returns memoized function', () => {
-    const filteredTodos = memoizeObject(filter, createSelector)
+    const filteredTodos = memoizeWithSelectors(filter, createSelector)
 
     const EXPECTED = [
       {
@@ -57,7 +57,7 @@ describe('memoizeObject', () => {
   })
 
   it('always calculates with no selectors', () => {
-    const filteredTodos = memoizeObject(filter, () => [])
+    const filteredTodos = memoizeWithSelectors(filter, () => [])
     const filtered = filteredTodos(store)
     const another = filteredTodos(store)
 
