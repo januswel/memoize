@@ -8,10 +8,10 @@ See the `*.test.ts` files.
 
 ## Exported functions
 
-        | without selector  | with selector
---------|-------------------|---------------------------
-shallow | memoize           | memoizeWithSelector
-deep    | deepMemoize       | deepMemoizeWithSelector
+|             | without selector  | with selector             |
+|-------------|-------------------|---------------------------|
+|**shallow**  | `memoize`         | `memoizeWithSelector`     |
+|**deep**     | `deepMemoize`     | `deepMemoizeWithSelector` |
 
 Selector is a function to select arbitrary properties from any objects. Selected properties by selector are used as arguments for memoized function.
 
