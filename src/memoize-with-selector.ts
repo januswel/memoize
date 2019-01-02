@@ -1,9 +1,13 @@
 type GenerateId = (args: Array<any>) => string
 
+type Memoizee = (arg: Object) => any
+type Memoized = Memoizee
+type Selector = (arg: Object) => Array<any>
+
 export default (generateId: GenerateId) => {
   const tables = new Map()
 
-  return (memoizee: (arg: Object) => any, selector: (arg: Object) => Array<any>) => {
+  return (memoizee: Memoizee, selector: Selector): Memoized => {
     if (!tables.has(memoizee)) {
       tables.set(memoizee, new Map())
     }
