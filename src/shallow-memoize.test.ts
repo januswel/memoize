@@ -1,8 +1,9 @@
 import shallowMemoize from './shallow-memoize'
 
-describe('memoize', () => {
+describe('shallowMemoize', () => {
   it('returns memoized function with no arguments', () => {
     const nop = shallowMemoize(() => ({}))
+    expect(typeof nop).toBe('function')
     const empty = nop()
     expect(nop()).toBe(empty)
   })
