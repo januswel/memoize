@@ -4,12 +4,17 @@ Exports functions to memoize functions with / without selectors.
 
 ## Usage
 
-```typescript
-import { deepMemoize, memoizeWithSelectors } from '@januswel/memoize'
+See the `*.test.ts` files.
 
-const deepMemoized = deepMemoize((a, b) => a + b)
-const selector = memoizeWithSelectors(
-  (store) => store.todos.filter(todo => todo.isCompleted).length,
-  (store) => [store.todos]
-)
+## Exported functions
+
+        | without selector  | with selector
+--------|-------------------|---------------------------
+shallow | memoize           | memoizeWithSelector
+deep    | deepMemoize       | deepMemoizeWithSelector
+
+Selector is a function to select arbitrary properties from any objects. Selected properties by selector are used as arguments for memoized function.
+
+```javascript
+const selector = obj => [obj.foo, obj.bar]
 ```
