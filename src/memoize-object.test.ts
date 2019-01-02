@@ -30,24 +30,14 @@ const store: Store = {
   ],
 }
 
+const filter = (store: Store) => store.todos.filter(todo => store.filter < todo.createdAt)
+const createSelector = (store: Store) => [store.filter, store.todos]
+
 describe('memoizeObject', () => {
   it('returns memoized function', () => {
-    const numofCompleted = memoizeObject(
-      (store: Store) => store.todos.filter(todo => todo.isCompleted).length,
-      (store: Store) => [store.todos],
-    )
-    expect(typeof numofCompleted).toBe('function')
-    expect(numofCompleted(store)).toBe(2)
-    expect(numofCompleted(store)).toBe(2)
-  })
+    const filteredTodos = memoizeObject(filter, createSelector)
 
-  it('returns memoized function', () => {
-    const filteredTodos = memoizeObject(
-      (store: Store) => store.todos.filter(todo => store.filter < todo.createdAt),
-      (store: Store) => [store.filter, store.todos],
-    )
-
-    const expected = [
+    const EXPECTED = [
       {
         title: 'implement memoizeObject',
         isCompleted: true,
@@ -61,18 +51,17 @@ describe('memoizeObject', () => {
     ]
 
     expect(typeof filteredTodos).toBe('function')
-    expect(filteredTodos(store)).toEqual(expected)
-    expect(filteredTodos(store)).toEqual(expected)
+    const recorded = filteredTodos(store)
+    expect(recorded).toEqual(EXPECTED)
+    expect(filteredTodos(store)).toBe(recorded)
   })
 
   it('always calculates with no selectors', () => {
-    const numofCompleted = memoizeObject(
-      (store: Store) => store.todos.filter(todo => todo.isCompleted).length,
-      () => [],
-    )
-    expect(numofCompleted(store)).toBe(2)
-    expect(numofCompleted(store)).toBe(2)
-    expect(numofCompleted(store)).toBe(2)
-    expect(numofCompleted(store)).toBe(2)
+    const filteredTodos = memoizeObject(filter, () => [])
+    const filtered = filteredTodos(store)
+    const another = filteredTodos(store)
+
+    expect(another).not.toBe(filtered)
+    expect(another).toEqual(filtered)
   })
 })
