@@ -1,8 +1,8 @@
-import memoize from './memoize'
+import deepMemoize from './deep-memoize'
 
 describe('memoize', () => {
   it('returns memoized function', () => {
-    const memoizedAdd = memoize((a: number, b: number) => ({ answer: a + b }))
+    const memoizedAdd = deepMemoize((a: number, b: number) => ({ answer: a + b }))
     expect(typeof memoizedAdd).toBe('function')
     const oneTwo = memoizedAdd(1, 2)
     expect(memoizedAdd(1, 2)).toBe(oneTwo)

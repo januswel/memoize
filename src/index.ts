@@ -1,4 +1,4 @@
-import memoize from './memoize'
+import deepMemoize from './deep-memoize'
 import memoizeWithSelectors from './memoize-with-selectors'
 
-export { memoize, memoizeWithSelectors }
+export { deepMemoize, memoizeWithSelectors }
