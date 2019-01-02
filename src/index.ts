@@ -1,6 +1,6 @@
 import memoize from './shallow-memoize'
 import deepMemoize from './deep-memoize'
-import memoizeWithSelectors from './shallow-memoize-with-selectors'
-import deepMemoizeWithSelectors from './deep-memoize-with-selectors'
+import memoizeWithSelector from './shallow-memoize-with-selector'
+import deepMemoizeWithSelector from './deep-memoize-with-selector'
 
-export { memoize, memoizeWithSelectors, deepMemoize, deepMemoizeWithSelectors }
+export { memoize, memoizeWithSelector, deepMemoize, deepMemoizeWithSelector }
