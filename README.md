@@ -1,4 +1,4 @@
-# memoize v0.2.0
+# memoize v0.2.1
 
 Exports functions to memoize functions with / without selectors.
 
