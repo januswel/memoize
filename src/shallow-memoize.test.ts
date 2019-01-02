@@ -1,14 +1,14 @@
-import memoize from './memoize'
+import shallowMemoize from './shallow-memoize'
 
 describe('memoize', () => {
   it('returns memoized function with no arguments', () => {
-    const nop = memoize(() => ({}))
+    const nop = shallowMemoize(() => ({}))
     const empty = nop()
     expect(nop()).toBe(empty)
   })
 
   it('returns memoized function with some arguments', () => {
-    const add = memoize((a: { n: number }, b: { n: number }) => ({ n: a.n + b.n }))
+    const add = shallowMemoize((a: { n: number }, b: { n: number }) => ({ n: a.n + b.n }))
     expect(typeof add).toBe('function')
 
     const one = { n: 1 }
