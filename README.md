@@ -8,10 +8,10 @@ See the `*.test.ts` files.
 
 ## Exported functions
 
-|                               | shallowly     | deeply        |
-|-------------------------------|---------------|---------------|
-| **cache all args**            | `memoize`     | `deepMemoize` |
-| **cache only previous args**  | `memoizeOnce` | -             |
+|                               | shallowly     | deeply            |
+|-------------------------------|---------------|-------------------|
+| **cache all args**            | `memoize`     | `deepMemoize`     |
+| **cache only previous args**  | `memoizeOnce` | `deepMemoizeOnce` |
 
 ### With selector
 
