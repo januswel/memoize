@@ -1,8 +1,8 @@
-import memoizeOnce from './memoize-once'
+import shallowMemoizeOnce from './shallow-memoize-once'
 
-describe('memoizeOnce', () => {
+describe('shallowMemoizeOnce', () => {
   it('returns function to memoize once', () => {
-    const add = memoizeOnce((a, b) => ({ n: a.n + b.n }))
+    const add = shallowMemoizeOnce((a, b) => ({ n: a.n + b.n }))
 
     const one = { n: 1 }
     const two = { n: 2 }

@@ -1,9 +1,9 @@
-import memoizeOnceWithSelector from './memoize-once-with-selector'
+import shallowMemoizeOnceWithSelector from './shallow-memoize-once-with-selector'
 import { store, filter, selector, Store } from './fixtures'
 
-describe('memoizeOnceWithSelector', () => {
+describe('shallowMemoizeOnceWithSelector', () => {
   it('returns function to memoize once', () => {
-    const filteredTodos = memoizeOnceWithSelector(filter, selector)
+    const filteredTodos = shallowMemoizeOnceWithSelector(filter, selector)
 
     expect(typeof filteredTodos).toBe('function')
     const newers = filteredTodos(store)
