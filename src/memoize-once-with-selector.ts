@@ -3,9 +3,9 @@ import equals from './utils/equals'
 let previous: Array<any>
 let result: any
 
-type Memoizee = (arg: Object) => any
-type Memoized = Memoizee
-type Selector = (arg: Object) => Array<any>
+type Memoizee = (...args: Array<any>) => any
+type Memoized = (arg: any) => any
+type Selector = (arg: any) => Array<any>
 
 export default (memoizee: Memoizee, selector: Selector): Memoized => {
   return (arg: Object) => {
@@ -15,7 +15,7 @@ export default (memoizee: Memoizee, selector: Selector): Memoized => {
     }
 
     previous = args.slice()
-    result = memoizee(arg)
+    result = memoizee.apply(null, args)
     return result
   }
 }
