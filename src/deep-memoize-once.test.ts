@@ -3,6 +3,7 @@ import deepMemoizeOnce from './deep-memoize-once'
 describe('deepMemoizeOnce', () => {
   it('returns function to memoize once', () => {
     const add = deepMemoizeOnce((a, b) => ({ n: a.n + b.n }))
+    const sub = deepMemoizeOnce((a, b) => ({ n: a.n - b.n }))
 
     const one = { n: 1 }
     const two = { n: 2 }
@@ -12,6 +13,8 @@ describe('deepMemoizeOnce', () => {
 
     const twoOne = add(two, one)
     expect(twoOne).toEqual(oneTwo)
+
+    sub(one, two)
 
     const anotherOneTwo = add(one, two)
     expect(anotherOneTwo).toEqual(oneTwo)

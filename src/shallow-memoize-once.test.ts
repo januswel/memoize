@@ -3,6 +3,7 @@ import shallowMemoizeOnce from './shallow-memoize-once'
 describe('shallowMemoizeOnce', () => {
   it('returns function to memoize once', () => {
     const add = shallowMemoizeOnce((a, b) => ({ n: a.n + b.n }))
+    const sub = shallowMemoizeOnce((a, b) => ({ n: a.n - b.n }))
 
     const one = { n: 1 }
     const two = { n: 2 }
@@ -10,6 +11,8 @@ describe('shallowMemoizeOnce', () => {
     const oneTwo = add(one, two)
     const twoOne = add(two, one)
     expect(oneTwo).toEqual(twoOne)
+
+    sub(one, two)
 
     const anotherOneTwo = add(one, two)
     expect(anotherOneTwo).toEqual(oneTwo)

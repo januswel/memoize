@@ -1,19 +1,22 @@
 import equals from './utils/equals'
 
-let previous: Array<any>
-let result: any
+const table = new Map()
 
 type Memoizee = (...args: Array<any>) => any
 type Memoized = Memoizee
-export default (memoizee: Memoizee): Memoized => {
-  return (...args: Array<any>) => {
-    const ids = args.map(element => JSON.stringify(element))
-    if (previous && equals(previous, ids)) {
-      return result
-    }
 
-    previous = ids
-    result = memoizee.apply(null, args)
-    return result
+export default (memoizee: Memoizee): Memoized => (...args: Array<any>) => {
+  if (!table.has(memoizee)) {
+    table.set(memoizee, { previous: null, result: null })
   }
+  const cache = table.get(memoizee)
+
+  const ids = args.map(element => JSON.stringify(element))
+  if (cache.previous && equals(cache.previous, ids)) {
+    return cache.result
+  }
+
+  cache.previous = ids
+  cache.result = memoizee.apply(null, args)
+  return cache.result
 }
